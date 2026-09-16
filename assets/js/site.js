@@ -1,4 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const infrastructureLink = document.querySelector('.site-nav a[href="infrastructure.html"]');
+  if (infrastructureLink && !document.querySelector('.site-nav a[href="portfolio.html"]')) {
+    infrastructureLink.insertAdjacentHTML('beforebegin', '<a href="portfolio.html">Portfolio</a>');
+    if (location.pathname.endsWith('/portfolio.html')) document.querySelector('.site-nav a[href="portfolio.html"]').classList.add('active');
+  }
+
+  document.querySelectorAll('a[href="tel:+919820079110"]').forEach(phone => {
+    if (!phone.parentElement.querySelector('a[href="tel:+918779535340"]')) phone.insertAdjacentHTML('afterend', '<a href="tel:+918779535340">+91 87795 35340</a>');
+  });
+
+  const equipment = document.querySelector('.support-equipment');
+  if (equipment && !equipment.textContent.includes('Injection molding')) equipment.insertAdjacentHTML('beforeend', '<span>140T × 2 and 180T injection molding machines</span>');
+
   const toggle = document.querySelector('.nav-toggle');
   const nav = document.querySelector('.site-nav');
   if (toggle && nav) {
